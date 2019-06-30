@@ -1,9 +1,16 @@
-{% if issue_list %}
-	<ul>
-	{% for issue in issue_list %}
-		<li>{{issue.title}}</li>
-	{% endfor %}
-	</ul>
-{% else %}
-	<p>Lucky you, no issues</p>
-{% endif %}
+{% extends 'tickets/base.html' %}
+
+{% block content %}
+	{% if issue_list %}
+		{% for issue in issue_list %}
+			<div class="card" style="width: 18rem">
+				<div class="card-header">
+					<h5 class="card-title">{{issue.title}}</h5>
+				</div>
+				<p class="card-body">{{issue.desc}}</p>
+			</div>
+		{% endfor %}
+	{% else %}
+		<p>Lucky you, no issues</p>
+	{% endif %}
+{% endblock %}
